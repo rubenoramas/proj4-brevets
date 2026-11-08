@@ -1,9 +1,8 @@
-FROM python:3
-MAINTAINER Ram Durairajan "noemail@website.domain"
-RUN apt-get update -y
-RUN apt-get install -y python3-pip python-dev build-essential
-COPY . /app
+FROM python:3.11-slim
+LABEL maintainer="Ruben Oramas <ruben.oramas05@gmail.com>"
 WORKDIR /app
+COPY requirements.txt .
 RUN pip install -r requirements.txt
+COPY . .
 ENTRYPOINT ["python"]
 CMD ["flask_brevets.py"]
